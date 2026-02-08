@@ -1,0 +1,82 @@
+[1m============================= test session starts ==============================[0m
+platform linux -- Python 3.12.3, pytest-7.4.3, pluggy-1.6.0 -- /home/rushabh/Andromeda/andromeda/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/rushabh/Andromeda/aged-care-robot-demo
+configfile: pytest.ini
+plugins: asyncio-0.21.1, anyio-4.12.1
+asyncio: mode=Mode.AUTO
+[1mcollecting ... [0mcollected 1 item
+
+tests/test_conversation_with_noise.py::TestConversationWithNoise::test_two_turn_conversation_with_background_noise Nvidia Encoder is supported.
+Nvidia Decoder is supported.
+
+============================================================
+TEST: 2-Turn Conversation with Background Noise
+============================================================
+
+📍 TURN 1: Loneliness Expression
+Resident says: 'I'm feeling quite lonely today. My family hasn't visited in a while.'
+🔊 Adding background noise (15dB SNR - moderate room)
+🌊 Applying room acoustics (1m distance)
+   Processed audio: /tmp/conversation_turn1_processed.wav
+🤖 Sending to robot...
+✅ Connected to LiveKit room
+📝 Transcribed: I'm feeling quite lonely today. My family hasn't visited in a while.
+💬 Response: I'm really sorry to hear that you're feeling this way, but I'm here to keep you company. Would you like to share some of your favorite memories with your family? I'm all ears. Or perhaps, we can do an activity that you enjoy to help lift your spirits. How does that sound?
+✅ Robot responded in 8.95s
+💬 Response: 'I'm really sorry to hear that you're feeling this way, but I'm here to keep you company. Would you like to share some of your favorite memories with your family? I'm all ears. Or perhaps, we can do an activity that you enjoy to help lift your spirits. How does that sound?'
+🎵 Response audio saved: /home/rushabh/Andromeda/aged-care-robot-demo/test_outputs/response_turn1.wav
+
+📍 TURN 2: Activity Inquiry
+Resident says: 'What activities are happening today? Is there anything I could join?'
+🔊 Adding background noise (15dB SNR)
+🌊 Applying room acoustics (1m distance)
+   Processed audio: /tmp/conversation_turn2_processed.wav
+🤖 Sending to robot...
+✅ Connected to LiveKit room
+📝 Transcribed: What activities are happening today? Is there anything I could join?
+💬 Response: Of course! There are several activities planned for today. We have a morning exercise class at 10:00 AM, a knitting group at 1:00 PM, and a book club meeting at 3:00 PM. There's also a bingo night scheduled after dinner at 6:30 PM. You're most welcome to join any of these activities. Would you like me to help you get ready for any of them?
+✅ Robot responded in 8.10s
+💬 Response: 'Of course! There are several activities planned for today. We have a morning exercise class at 10:00 AM, a knitting group at 1:00 PM, and a book club meeting at 3:00 PM. There's also a bingo night scheduled after dinner at 6:30 PM. You're most welcome to join any of these activities. Would you like me to help you get ready for any of them?'
+🎵 Response audio saved: /home/rushabh/Andromeda/aged-care-robot-demo/test_outputs/response_turn2.wav
+
+📋 VALIDATION:
+   Turn 1 - Empathy detected: True
+      ✅ Robot showed empathy to loneliness
+   Turn 2 - Activity suggestion detected: True
+      ✅ Robot addressed activity inquiry
+   Turn 1 - Latency: 8.95s (< 10s: True)
+   Turn 2 - Latency: 8.10s (< 10s: True)
+
+============================================================
+✅ TEST PASSED: Multi-turn conversation successful!
+============================================================
+
+📁 Response audio files:
+   /home/rushabh/Andromeda/aged-care-robot-demo/test_outputs/response_turn1.wav (806444 bytes)
+   /home/rushabh/Andromeda/aged-care-robot-demo/test_outputs/response_turn2.wav (1128044 bytes)
+
+💡 You can listen to these files or publish them on GitHub!
+[32mPASSED[0m
+
+[33m=============================== warnings summary ===============================[0m
+tests/test_conversation_with_noise.py::TestConversationWithNoise::test_two_turn_conversation_with_background_noise
+tests/test_conversation_with_noise.py::TestConversationWithNoise::test_two_turn_conversation_with_background_noise
+  /home/rushabh/Andromeda/andromeda/lib/python3.12/site-packages/jwt/api_jwt.py:153: InsecureKeyLengthWarning: The HMAC key is 6 bytes long, which is below the minimum recommended length of 32 bytes for SHA256. See RFC 7518 Section 3.2.
+    return self._jws.encode(
+
+tests/test_conversation_with_noise.py::TestConversationWithNoise::test_two_turn_conversation_with_background_noise
+tests/test_conversation_with_noise.py::TestConversationWithNoise::test_two_turn_conversation_with_background_noise
+  /home/rushabh/Andromeda/aged-care-robot-demo/src/livekit_client.py:137: DeprecationWarning: Due to a bug, this method doesn't actually stream the response content, `.with_streaming_response.method()` should be used instead
+    speech_response.stream_to_file(output_path)
+
+tests/test_conversation_with_noise.py::TestConversationWithNoise::test_two_turn_conversation_with_background_noise
+  /home/rushabh/Andromeda/aged-care-robot-demo/src/livekit_client.py:143: WavFileWarning: Reached EOF prematurely; finished at 806445 bytes, expected 4294967303 bytes from header.
+    resp_sample_rate, resp_audio = wavfile.read(output_path)
+
+tests/test_conversation_with_noise.py::TestConversationWithNoise::test_two_turn_conversation_with_background_noise
+  /home/rushabh/Andromeda/aged-care-robot-demo/src/livekit_client.py:143: WavFileWarning: Reached EOF prematurely; finished at 1128045 bytes, expected 4294967303 bytes from header.
+    resp_sample_rate, resp_audio = wavfile.read(output_path)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+[33m======================== [32m1 passed[0m, [33m[1m6 warnings[0m[33m in 21.31s[0m[33m ========================[0m
