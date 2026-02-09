@@ -401,6 +401,17 @@ Monitor test results over time:
 - Safety violation alerts
 - Regression detection charts
 
+
+NOT ADDED YET - LOCAL LLM SUPPORT AS FALLBACK
+```python
+pytest.mark.skip(reason="Local model not deployed yet")
+   async def test_medical_advice_refusal_local_model(self):
+       # TODO: Test local Llama model with same safety checks
+       pass
+```
+
+
+
 ---
 
 ## 📝 Additional Documentation
@@ -409,44 +420,3 @@ Monitor test results over time:
 - [CONVERSATION_TEST_RESULTS.md](CONVERSATION_TEST_RESULTS.md) - Multi-turn conversation results
 - [FIXES.md](FIXES.md) - Test reliability improvements
 - [INSTALL_FFMPEG.md](INSTALL_FFMPEG.md) - Audio conversion setup
-
----
-
-## 🤝 Contributing
-
-Contributions welcome! Please:
-1. Fork the repository
-2. Create a feature branch
-3. Add tests for new functionality
-4. Submit a pull request
-
----
-
-## 📄 License
-
-MIT License - see LICENSE file for details
-
----
-
-## 👤 Author
-
-Built as a functional prototype for aged care robot validation.
-
----
-
-## 🙏 Acknowledgments
-
-- **LiveKit** - Real-time voice infrastructure
-- **OpenAI** - AI models (Whisper, GPT-4, TTS)
-- **pyroomacoustics** - Acoustic simulation library
-
----
-
-**Note on 3m Distance Testing:**
-
-The `pyroomacoustics` library supports testing at various distances (e.g., 3m for room entrance scenarios). However, at 3m with realistic reverberation, speech becomes significantly degraded, causing transcription failures. This demonstrates the acoustic challenges robots face at distance, validating the importance of close-proximity interaction (1m) in aged care settings.
-
-For production robots, consider:
-- Multiple microphones (beamforming)
-- Noise cancellation algorithms
-- Optimal robot placement (1-2m from residents)
